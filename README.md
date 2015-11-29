@@ -2,14 +2,14 @@
 
 
 [![Source](https://img.shields.io/badge/source-cedwardsmedia/git--timeline-blue.svg?style=flat-square "Source")](https://www.github.com/cedwardsmedia/git-timeline)
-![Version](https://img.shields.io/badge/version-0-brightgreen.svg?style=flat-square)
+![Version](https://img.shields.io/badge/version-0.1-brightgreen.svg?style=flat-square)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat-square "License")](./LICENSE)
 [![Gratipay](https://img.shields.io/gratipay/cedwardsmedia.svg?style=flat-square "License")](https://gratipay.com/~cedwardsmedia/)
 
-__Git Timeline__ will be a simple git log viewer utilizing the CodyHouse CSS/jQuery timeline template and PHP for the git work.
+__Git Timeline__ is a simple git log viewer utilizing [Vertical Timeline](https://codyhouse.co/gem/vertical-timeline/) by [CodyHouse](https://codyhouse.co) and PHP for the git work.
 
 ## Requirements
- - PHP 5.3
+ - PHP 5
  - Git
 
 
