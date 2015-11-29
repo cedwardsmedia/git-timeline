@@ -3,13 +3,25 @@
 ini_set('display_errors', 0);
 error_reporting(E_ALL & ~E_NOTICE);
 
+// If repo is passed in the URL
+if ($_GET["repo"]) {
+	$dir = $_GET["repo"];
+}
+
+// Change to the requested directory
+chdir($dir);
+
 // Set repo name from directory name
 $repo = trim(substr(getcwd(), strripos(getcwd(), "/"), strlen(getcwd())), "/");
+
+// Get information on the remotes
+$remote = exec("git remote -v");
+$remote = "http://" . str_replace(":", "/",rtrim(substr($remote , strpos($remote, "@")+1), ".git (push)"));
 
 // Set up output array
 $output = array();
 // Fill array with git log
-exec("git log",$output);
+exec("git log -n 100",$output);
 // Push git log into $history array
 $history = array();
 foreach($output as $line){
@@ -48,7 +60,7 @@ foreach($output as $line){
 </head>
 <body>
 	<header>
-		<h1><?php echo $repo; ?></h1>
+		<h1><i class="fa fa-code-fork"></i> <?php echo $repo; ?></h1>
 	</header>
 
 	<section id="cd-timeline" class="cd-container">
@@ -66,7 +78,7 @@ foreach($history as $item) {
 				<h2><?php echo "Commit: " . substr($item['hash'], 0, 8);?></h2>
 				<p class="author">Committed by: <?php echo $item['author'];?></p>
 				<p class="message"><?php echo $item['message'];?></p>
-				<a href="https://www.github.com/cedwardsmedia/git-timeline/commit/<?php echo trim($item['hash'], " "); ?>" class="cd-read-more">Read more</a>
+				<a href="<?php echo $remote; ?>/commit/<?php echo trim($item['hash'], " "); ?>" class="cd-read-more" target="_blank">Read more</a>
 				<span class="cd-date"><?php echo $item['date'];?></span>
 			</div> <!-- cd-timeline-content -->
 		</div> <!-- cd-timeline-block -->
