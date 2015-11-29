@@ -1,10 +1,16 @@
 <?php
+// Turn off error reporting
+ini_set('display_errors', 0);
+error_reporting(E_ALL & ~E_NOTICE);
 
-
+// Set repo name from directory name
 $repo = trim(substr(getcwd(), strripos(getcwd(), "/"), strlen(getcwd())), "/");
 
+// Set up output array
 $output = array();
+// Fill array with git log
 exec("git log",$output);
+// Push git log into $history array
 $history = array();
 foreach($output as $line){
     if(strpos($line, 'commit')===0){
@@ -48,11 +54,12 @@ foreach($output as $line){
 	<section id="cd-timeline" class="cd-container">
 
 <?php
+// Process each entry in history as $item
 foreach($history as $item) {
 ?>
 		<div class="cd-timeline-block">
 			<div class="cd-timeline-img cd-picture">
-				<i class="fa fa-clock-o fa-3x"></i>
+				<i class="fa fa-history fa-2x"></i>
 			</div> <!-- cd-timeline-img -->
 
 			<div class="cd-timeline-content">
