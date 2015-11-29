@@ -34,7 +34,9 @@ __Git Timeline__ will be a simple git log viewer utilizing the CodyHouse CSS/jQu
 
 ## To-do:
 
-1. Everything
+1. Determine best way to get git log for PHP as an array
+2. Handle each log entry as an individual item in the timeline
+3. Make it look sexy
 
 
 ## Credits
