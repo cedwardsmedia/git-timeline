@@ -30,12 +30,13 @@ __Git Timeline__ is a simple git log viewer utilizing [Vertical Timeline](https:
 
 ## History
 
- - ** [_Nov 26, 2015_]: ** Initial concept and planning
+ - **[_Nov 30, 2015_]: ** First working release
+ - [_Nov 26, 2015_]: Initial concept and planning
 
 ## To-do:
 
-1. Determine best way to get git log for PHP as an array
-2. Handle each log entry as an individual item in the timeline
+1. Fix a bug preventing the first chronological entry in the git log from being pushed to the array.
+2. Add logic to the remote handler that accounts for multiple remotes (currently breaks with more than one)
 3. Make it look sexy
 
 
