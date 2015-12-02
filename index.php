@@ -1,8 +1,4 @@
 <?php
-// Turn off error reporting
-ini_set('display_errors', 0);
-error_reporting(E_ALL & ~E_NOTICE);
-
 // If repo is passed in the URL
 if ($_GET["repo"]) {
 	$dir = $_GET["repo"];
