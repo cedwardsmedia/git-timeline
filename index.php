@@ -39,8 +39,14 @@ foreach($output as $line){
 	$commit['date']   = substr($line, strlen('Date:'));
     }
     else{
-	$commit['message']  .= $line;
+		 if(isset($commit['message']))
+	     $commit['message'] .= $line;
+		 else
+		     $commit['message'] = $line;
     }
+}
+if(!empty($commit)) {
+    array_push($history, $commit);
 }
 ?>
 <!doctype html>
