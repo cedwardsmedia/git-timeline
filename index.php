@@ -2,12 +2,16 @@
 // If repo is passed in the URL
 if (isset($_GET["repo"]) && (strlen($_GET["repo"]) > 2)) {
 	$dir = $_GET["repo"];
+} else {
+	$dir = getcwd();
+}
+
+if (file_exists($dir)){
 	// Change to the requested directory
 	chdir($dir);
 } else {
-	$dir = dirname($_SERVER['SCRIPT_NAME']);
+	exit("$dir not found.");
 }
-
 
 // Set repo name from directory name
 $repo = trim(substr(getcwd(), strripos(getcwd(), "/"), strlen(getcwd())), "/");
