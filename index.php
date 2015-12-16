@@ -1,7 +1,11 @@
 <?php
 // If repo is passed in the URL
 if (isset($_GET["repo"]) && (strlen($_GET["repo"]) > 2)) {
-	$dir = $_GET["repo"];
+	if (strpos($_GET["repo"], "../") !== false || strpos($_GET["repo"], "./") !== false){
+		exit("Access denied.");
+	} else {
+		$dir = ltrim($_GET["repo"], "/");
+	}
 } else {
 	$dir = getcwd();
 }
